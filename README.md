@@ -30,26 +30,10 @@ nvaitc-aps-project-demos/
 
 ## Current Projects
 
-- **IntelliExo AI Advisor Panel**: AI-powered conversational platform featuring historical figures and thought leaders as personal advisors using NVIDIA's LLM and RAG technologies
-- **ProGo Protein Evaluation (TM-PLDDT)**: Comprehensive protein structure prediction and evaluation pipeline using ESMfold integration and advanced structural similarity analysis
-- **Explorer AI**: Curiosity-driven agent platform demonstrating ReAct architecture with web search integration and persistent memory using NVIDIA NIMs
-- **Resume Evaluator AI**: Full-stack application for intelligent resume screening and candidate evaluation, leveraging NVIDIA's Llama 3.1 405B model for HR automation
-
-## Prerequisites
-
-- NVIDIA GPU with appropriate drivers
-- Docker with NVIDIA Container Runtime
-- CUDA Toolkit (version specified per project)
-- Git
-
-## Contributing
-
-When adding a new demo:
-1. Create a new folder under `projects/`
-2. Include a clear README with hardware requirements
-3. Provide a one-command deployment option
-4. Document performance metrics and optimization notes
-5. Submit a pull request
+- **IntelliExo AI Advisor Panel**: AI-powered conversational platform featuring historical figures and thought leaders as personal advisors using LLMs running on NIMs and RAG technologies
+- **ProGo Protein Evaluation (TM-PLDDT)**: Comprehensive protein structure prediction and evaluation pipeline using ESMFold (NIM) integration and advanced structural similarity analysis
+- **Explorer AI**: Curiosity-driven agent platform demonstrating ReAct architecture with web search integration and persistent memory using NIMs
+- **Resume Evaluator AI**: Full-stack application for intelligent resume screening and candidate evaluation, leveraging Llama 3.1 405B model running on NIMs for HR automation
 
 ## Support
 
