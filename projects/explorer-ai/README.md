@@ -1,6 +1,6 @@
 # Explorer AI: Curiosity-Driven Agent Platform
 
-Explorer AI is an interactive web-based platform that demonstrates advanced AI agent capabilities using NVIDIA NIMs and ReAct (Reasoning + Acting) architecture. The project showcases curiosity-driven agents that can engage in dynamic conversations, perform web searches, and maintain context across sessions - all powered by NVIDIA's powerful language models.
+Explorer AI is an interactive web-based platform that demonstrates advanced AI agent capabilities using NVIDIA NIMs and ReAct (Reasoning + Acting) architecture. The project showcases curiosity-driven agents that can engage in dynamic conversations, perform web searches, and maintain context across sessions - all powered by powerful language models running on NIMs.
 
 ## 🌟 Features
 
@@ -210,8 +210,10 @@ This project demonstrates advanced AI agent architectures and is designed for:
 - Research into agent-based conversational AI
 
 Project By:
-Jewel Aw (NVIDIA Student Ambassador), Darren Tan (NVIDIA), Aik Beng Ng (NVIDIA), Simon See (NVIDIA)
+Jewel Aw (NVIDIA Student Ambassador), Darren Tan (NVIDIA), Aik Beng Ng (NVIDIA), Simon See (NVIDIA).
+
 An NVAITC APS project (NVIDIA).
+
 Co-supervised by Singapore Institute of Technology, a collaboration between NVAITC-APS and Singapore Institute of Technology
 
 ## 📄 License
