@@ -89,6 +89,7 @@ streamlit run main.py
 ## Contributing 🤝
 Project By:
 Ethan Wei (NVIDIA Student Ambassador), Darren Tan (NVIDIA), Aik Beng Ng (NVIDIA), Simon See (NVIDIA)
+
 An NVAITC APS project (NVIDIA).
 
 ## 📄 License
