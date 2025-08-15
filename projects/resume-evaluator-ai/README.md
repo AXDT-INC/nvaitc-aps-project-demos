@@ -1,6 +1,6 @@
 # Resume Evaluator AI: Intelligent Resume Screening Platform
 
-Resume Evaluator AI is a full-stack web application that leverages NVIDIA's large language models to provide intelligent resume evaluation and candidate assessment. The platform helps hiring managers and recruiters make data-driven decisions by automatically scoring resumes against job descriptions and providing actionable improvement suggestions.
+Resume Evaluator AI is a full-stack web application that leverages large language models running on NIMs to provide intelligent resume evaluation and candidate assessment. The platform helps hiring managers and recruiters make data-driven decisions by automatically scoring resumes against job descriptions and providing actionable improvement suggestions.
 
 ## 🌟 Features
 
@@ -289,6 +289,7 @@ This project demonstrates AI-powered recruitment technology and is designed for:
 
 Project By:
 Thangavel Jishnuanandh (NVIDIA Student Ambassador), Darren Tan (NVIDIA), Aik Beng Ng (NVIDIA), Simon See (NVIDIA)
+
 An NVAITC APS project (NVIDIA).
 
 ## 📄 License
