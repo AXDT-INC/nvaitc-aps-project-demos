@@ -456,8 +456,10 @@ These binaries are automatically detected and used based on your system architec
 
 Project By:
 Darren Tan (NVIDIA), Ian McLoughlin (SIT), Aik Beng Ng (NVIDIA), Daniel Wang Zhengkui (SIT), Simon See (NVIDIA)
+
 An NVAITC APS project (NVIDIA).
-Co-supervised by Singapore Institute of Technology, a collaboration between NVAITC-APS and Singapore Institute of Technology
+
+Co-supervised by Singapore Institute of Technology (SIT), a collaboration between NVAITC APS and SIT
 
 ## License
 
