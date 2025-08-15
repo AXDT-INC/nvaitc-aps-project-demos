@@ -214,8 +214,6 @@ Jewel Aw (NVIDIA Student Ambassador), Darren Tan (NVIDIA), Aik Beng Ng (NVIDIA),
 
 An NVAITC APS project (NVIDIA).
 
-Co-supervised by Singapore Institute of Technology, a collaboration between NVAITC-APS and Singapore Institute of Technology
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the repository's [LICENSE](../../LICENSE) file for details.
