@@ -8,7 +8,7 @@
 ### What Changed?
 <!-- Clearly describe what you changed and why -->
 
-### Type of Changes
+### Type of Changes (use 'x')
 - [ ] Bug fix (non-breaking change that fixes an issue)
 - [ ] New feature (non-breaking change that adds functionality)
 - [ ] Performance improvement
@@ -17,7 +17,7 @@
 - [ ] Dependency update
 - [ ] Other (please describe):
 
-### Update Checklist
+### Update Checklist (use 'x')
 - [ ] Changes are limited to one project folder
 - [ ] All existing functionality still works
 - [ ] New features/changes are documented in the project's README
