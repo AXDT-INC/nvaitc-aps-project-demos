@@ -1,8 +1,10 @@
 # Contributing to NVAITC APS Project Demos
 
-Welcome students! This guide explains how to contribute your projects to this repository.
+Welcome students! This guide explains how to contribute to existing projects in this repository.
 
 ## For External Students
+
+You can update and improve existing projects. Creating new project folders is restricted to NVIDIA team members.
 
 ### 1. Fork the Repository
 1. Click the "Fork" button on the main repository page
@@ -14,36 +16,46 @@ git clone https://github.com/YOUR-USERNAME/nvaitc-aps-project-demos.git
 cd nvaitc-aps-project-demos
 ```
 
-### 3. Create Your Project
-1. Create a new folder in `projects/`:
+### 3. Choose a Project to Edit
+Browse the existing projects in the `projects/` folder:
+- `intelliexo-ai-advisor-panel/`
+- `progo-protein-evaluation-tm-plddt/`
+- `explorer-ai/`
+- `resume-evaluator-ai/`
+
+### 4. Make Your Improvements
+1. Navigate to the project you want to update:
    ```bash
-   mkdir projects/your-project-name
+   cd projects/existing-project-name
    ```
 
-2. Follow the project structure:
-   ```
-   projects/your-project-name/
-   ├── README.md          # Project description, setup, usage
-   ├── requirements.txt   # Python dependencies (if applicable)
-   ├── src/              # Source code
-   ├── notebooks/        # Jupyter notebooks (if any)
-   └── data/            # Sample data (keep it small!)
+2. Common improvements you can make:
+   - Fix bugs or errors
+   - Improve documentation
+   - Add features or enhancements
+   - Optimize performance
+   - Update dependencies
+   - Add better examples
+   - Improve code quality
+
+3. Maintain the existing project structure
+
+4. Update the README.md to document your changes:
+   ```markdown
+   ## Updates
+   - [Date] by [Your Name]: Description of changes
    ```
 
-### 4. Project README Template
-Your project README.md should include:
-- Project title and description
-- Hardware/software requirements
-- Installation instructions
-- Usage examples
-- Expected results
-- Credits and acknowledgments
+5. Test everything thoroughly!
 
 ### 5. Submit Your Work
-1. Commit your changes:
+1. Commit your changes with a clear message:
    ```bash
    git add .
-   git commit -m "Add [project-name]: Brief description"
+   git commit -m "Update [project-name]: Brief description of changes"
+   # Examples:
+   # git commit -m "Update explorer-ai: Fix memory leak in agent loop"
+   # git commit -m "Update resume-evaluator-ai: Add support for PDF parsing"
    ```
 
 2. Push to your fork:
@@ -54,35 +66,42 @@ Your project README.md should include:
 3. Create a Pull Request:
    - Go to your fork on GitHub
    - Click "Pull Request"
-   - Provide a clear description
+   - Fill out the PR template completely
+   - Clearly explain what you changed and why
 
 ## Guidelines
 
 ### DO:
-- ✅ Keep projects self-contained in their folder
-- ✅ Include clear documentation
-- ✅ Test your setup instructions
+- ✅ Focus on improving existing projects
+- ✅ Maintain backward compatibility when possible
+- ✅ Test all changes thoroughly
+- ✅ Update documentation to reflect changes
 - ✅ Use relative paths
-- ✅ Include a requirements.txt or environment.yml
-- ✅ Credit all team members and supervisors
+- ✅ Credit original authors and add yourself as a contributor
+- ✅ Follow the existing code style and conventions
+- ✅ Add your changes to the project's README
 
 ### DON'T:
-- ❌ Upload large datasets (>50MB) - use links instead
+- ❌ Create new project folders (contact NVIDIA team if you have a new project idea)
+- ❌ Delete or rename existing projects
+- ❌ Break existing functionality
+- ❌ Upload large files (>50MB)
 - ❌ Include sensitive information or credentials
-- ❌ Modify other projects
+- ❌ Modify projects you're not working on
 - ❌ Use absolute paths
-- ❌ Submit incomplete or non-working code
+- ❌ Submit untested code
 
 ## Code Review Process
 1. NVIDIA team will review your PR
 2. We may request changes or clarifications
-3. Once approved, your project will be merged
-4. Your contribution will be part of the official repository!
+3. Once approved, your changes will be merged
+4. You'll be credited as a contributor!
 
 ## Need Help?
-- Check existing projects for examples
+- Study the existing code before making changes
 - Open an issue for questions
 - Contact your NVIDIA supervisor
+- Check the project's existing documentation
 
 ## License
 By contributing, you agree that your contributions will be licensed under the same license as this repository (Apache 2.0). 

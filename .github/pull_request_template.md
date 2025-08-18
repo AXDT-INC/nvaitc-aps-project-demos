@@ -1,30 +1,38 @@
-## Project Submission Checklist
+## Project Update Submission
 
-**Project Name:** 
-**Team Members:** 
+**Project Being Updated:** <!-- e.g., explorer-ai, resume-evaluator-ai -->
+**Your Name:** 
 **Institution:** 
 **Supervisor:** 
 
-### Description
-<!-- Brief description of your project and what it demonstrates -->
+### What Changed?
+<!-- Clearly describe what you changed and why -->
 
-### Checklist
-Please ensure your submission meets these requirements:
+### Type of Changes
+- [ ] Bug fix (non-breaking change that fixes an issue)
+- [ ] New feature (non-breaking change that adds functionality)
+- [ ] Performance improvement
+- [ ] Documentation update
+- [ ] Code quality improvement
+- [ ] Dependency update
+- [ ] Other (please describe):
 
-- [ ] Project is in `projects/your-project-name/` folder
-- [ ] Includes comprehensive README.md with setup instructions
-- [ ] All dependencies listed in requirements.txt or environment.yml
-- [ ] Code is tested and working
-- [ ] No large files (>50MB) or sensitive data included
-- [ ] All team members credited in README
-- [ ] Uses relative paths only
-- [ ] Follows the structure outlined in CONTRIBUTING.md
-
-### NVIDIA Technology Used
-<!-- Which NVIDIA technologies does your project showcase? (e.g., NIMs, RAPIDS, etc.) -->
+### Update Checklist
+- [ ] Changes are limited to one project folder
+- [ ] All existing functionality still works
+- [ ] New features/changes are documented in the project's README
+- [ ] Code follows the existing project's style
+- [ ] All tests pass (if applicable)
+- [ ] No large files (>50MB) or sensitive data added
+- [ ] Original authors are still credited
+- [ ] My name is added to contributors (if not already there)
 
 ### Testing
-<!-- How did you test your project? Include any relevant results -->
+<!-- How did you test your changes? What commands did you run? -->
+
+### Screenshots (if applicable)
+<!-- Add screenshots to show visual changes or new features -->
 
 ### Additional Notes
-<!-- Any other information reviewers should know --> 
+<!-- Any other information reviewers should know -->
+<!-- Link any relevant issues or discussions -->
