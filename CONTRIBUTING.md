@@ -2,8 +2,6 @@
 
 This guide explains how to contribute to existing projects in this repository.
 
-## For External Students
-
 You can update and improve existing projects. To creating new project folders, please contact your NVIDIA mentor.
 
 ### 1. Fork the Repository
