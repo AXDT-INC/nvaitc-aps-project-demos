@@ -60,7 +60,7 @@ Browse the existing projects in the `projects/` folder
 
 3. Create a Pull Request:
    - Go to your fork on GitHub
-   - Click "Pull Request"
+   - Click "Contribute" > "Open pull request"
    - Fill out the PR template completely
    - Clearly explain what you changed and why
 
