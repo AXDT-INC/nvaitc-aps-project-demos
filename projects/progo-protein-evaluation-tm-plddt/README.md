@@ -457,9 +457,12 @@ These binaries are automatically detected and used based on your system architec
 Project By:
 Darren Tan (NVIDIA), Ian McLoughlin (SIT), Aik Beng Ng (NVIDIA), Daniel Wang Zhengkui (SIT), Simon See (NVIDIA)
 
-An NVAITC APS project (NVIDIA).
+An NVIDIA AI Technology Centre, Asia Pacific South (NVAITC APS) project.
 
 Co-supervised by Singapore Institute of Technology (SIT), a collaboration between NVAITC APS and SIT
+
+## Updates
+- [2025-08-18] by Darren Tan: Updated README, fixed naming
 
 ## License
 
