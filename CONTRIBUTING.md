@@ -2,7 +2,7 @@
 
 This guide explains how to contribute to existing projects in this repository.
 
-You can update and improve existing projects. To creating new project folders, please contact your NVIDIA mentor.
+You can update and improve existing projects. For creating new project folders, please contact your NVIDIA POC.
 
 ### 1. Fork the Repository
 1. Click the "Fork" button on the main repository page
