@@ -1,10 +1,10 @@
 # Contributing to NVAITC APS Project Demos
 
-Welcome students! This guide explains how to contribute to existing projects in this repository.
+This guide explains how to contribute to existing projects in this repository.
 
 ## For External Students
 
-You can update and improve existing projects. Creating new project folders is restricted to NVIDIA team members.
+You can update and improve existing projects. To creating new project folders, please contact your NVIDIA mentor.
 
 ### 1. Fork the Repository
 1. Click the "Fork" button on the main repository page
@@ -17,11 +17,7 @@ cd nvaitc-aps-project-demos
 ```
 
 ### 3. Choose a Project to Edit
-Browse the existing projects in the `projects/` folder:
-- `intelliexo-ai-advisor-panel/`
-- `progo-protein-evaluation-tm-plddt/`
-- `explorer-ai/`
-- `resume-evaluator-ai/`
+Browse the existing projects in the `projects/` folder
 
 ### 4. Make Your Improvements
 1. Navigate to the project you want to update:
@@ -32,7 +28,6 @@ Browse the existing projects in the `projects/` folder:
 2. Common improvements you can make:
    - Fix bugs or errors
    - Improve documentation
-   - Add features or enhancements
    - Optimize performance
    - Update dependencies
    - Add better examples
@@ -77,7 +72,6 @@ Browse the existing projects in the `projects/` folder:
 - ✅ Test all changes thoroughly
 - ✅ Update documentation to reflect changes
 - ✅ Use relative paths
-- ✅ Credit original authors and add yourself as a contributor
 - ✅ Follow the existing code style and conventions
 - ✅ Add your changes to the project's README
 
@@ -95,7 +89,6 @@ Browse the existing projects in the `projects/` folder:
 1. NVIDIA team will review your PR
 2. We may request changes or clarifications
 3. Once approved, your changes will be merged
-4. You'll be credited as a contributor!
 
 ## Need Help?
 - Study the existing code before making changes

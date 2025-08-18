@@ -24,8 +24,6 @@
 - [ ] Code follows the existing project's style
 - [ ] All tests pass (if applicable)
 - [ ] No large files (>50MB) or sensitive data added
-- [ ] Original authors are still credited
-- [ ] My name is added to contributors (if not already there)
 
 ### Testing
 <!-- How did you test your changes? What commands did you run? -->
