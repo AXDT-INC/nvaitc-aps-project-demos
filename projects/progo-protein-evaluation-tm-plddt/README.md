@@ -5,12 +5,12 @@ A comprehensive pipeline for protein structure prediction and evaluation using E
 ## Overview
 
 ProGo Protein Evaluation Pipeline is a pipeline that:
-1. Predicts protein structures using ESMfold
-2. Compares predicted structures against ground truth structures using Foldseek
-3. Extracts and analyzes pLDDT confidence scores from predicted structures**
+1. **Predicts protein structures using ESMfold**
+2. **Compares predicted structures against ground truth structures using Foldseek**
+3. **Extracts and analyzes pLDDT confidence scores from predicted structures**
 4. Filters comparisons to statistically significant matches (E-value ≤ 10.0)
 5. Generates detailed comparison reports and structure quality metrics
-6. Performs comprehensive statistical analysis of both TM-scores and pLDDT confidence**
+6. Performs comprehensive statistical analysis of both TM-scores and pLDDT confidence
 7. Provides scientific interpretation of results
 8. Automatically skips duplicate sequences that match reference sequences
 9. Supports ground-truth-specific reference sequences for targeted duplicate detection
