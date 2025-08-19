@@ -19,9 +19,9 @@ ProGo Protein Evaluation Pipeline is a pipeline that:
 
 ![Protein Structure Visualization](assets/Protein_Visualization.gif)
 
-*Visualization generated on [build.nvidia.com](https://build.nvidia.com) using ESMfold predictions. This example demonstrates our pipeline evaluating generated proteins with target functional properties. 
+*Visualization generated on [build.nvidia.com](https://build.nvidia.com) using ESMfold predictions. This example demonstrates our pipeline evaluating generated proteins with target functional properties.* 
 
-The evaluated protein is associated with polyketide/non-ribosomal peptide synthetase (PKS/NRPS) systems, characterized by specific Gene Ontology (GO) terms: **GO:0031177** - Phosphopantetheine binding, **GO:0017000** - Antibiotic biosynthetic process, **GO:0008610** - Lipid biosynthetic process. These are industrially and medically important enzymes that synthesize complex natural products including antibiotics, making this an excellent showcase of functional protein generation and evaluation.* (Fischbach & Walsh, 2006; Beld et al., 2014; Gene Ontology: GO:0031177, GO:0017000, GO:0008610)
+*The evaluated protein is associated with polyketide/non-ribosomal peptide synthetase (PKS/NRPS) systems, characterized by specific Gene Ontology (GO) terms: **GO:0031177** - Phosphopantetheine binding, **GO:0017000** - Antibiotic biosynthetic process, **GO:0008610** - Lipid biosynthetic process. These are industrially and medically important enzymes that synthesize complex natural products including antibiotics, making this an excellent showcase of functional protein generation and evaluation.* (Fischbach & Walsh, 2006; Beld et al., 2014; Gene Ontology: GO:0031177, GO:0017000, GO:0008610)
 
 ## Requirements
 
