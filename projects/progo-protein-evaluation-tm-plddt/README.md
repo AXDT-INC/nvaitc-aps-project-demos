@@ -15,6 +15,12 @@ ProGo Protein Evaluation Pipeline is a pipeline that:
 8. Automatically skips duplicate sequences that match reference sequences
 9. Supports ground-truth-specific reference sequences for targeted duplicate detection
 
+## Showcase: Pipeline Evaluation in Action
+
+![Protein Structure Visualization](assets/Protein_Visualization.gif)
+
+*Visualization generated on [build.nvidia.com](https://build.nvidia.com) using ESMfold predictions. This example demonstrates our pipeline evaluating generated proteins with target functional properties. The evaluated protein is associated with polyketide/non-ribosomal peptide synthetase (PKS/NRPS) systems, characterized by specific Gene Ontology (GO) terms: **GO:0031177** - Phosphopantetheine binding, **GO:0017000** - Antibiotic biosynthetic process, **GO:0008610** - Lipid biosynthetic process. These are industrially and medically important enzymes that synthesize complex natural products including antibiotics, making this an excellent showcase of functional protein generation and evaluation.* (Fischbach & Walsh, 2006; Beld et al., 2014; Gene Ontology: GO:0031177, GO:0017000, GO:0008610)
+
 ## Requirements
 
 - Python 3.8+
@@ -462,7 +468,8 @@ An NVIDIA AI Technology Centre, Asia Pacific South (NVAITC APS) project.
 Co-supervised by Singapore Institute of Technology (SIT), a collaboration between NVAITC APS and SIT
 
 ## Updates
-- [2025-08-18] by Darren Tan: Updated README, fixed naming
+- [2024-08-18] by Darren Tan: Updated README, fixed naming
+- [2024-08-19] by Darren Tan: Added showcase visualization demonstrating pipeline evaluation results
 
 ## License
 
