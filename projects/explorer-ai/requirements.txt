@@ -34,6 +34,7 @@ langgraph-checkpoint-sqlite==2.0.6
 langgraph-prebuilt==0.1.7
 langgraph-sdk==0.1.60
 langsmith==0.3.22
+markdown==3.6
 marshmallow==3.21.3
 multidict==6.0.5
 mypy-extensions==1.0.0
