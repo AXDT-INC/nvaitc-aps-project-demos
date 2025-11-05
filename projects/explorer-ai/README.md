@@ -4,7 +4,7 @@ Explorer AI is an interactive web-based platform that demonstrates advanced AI a
 
 ## 🌟 Features
 
-- **Multi-Model Support**: Choose from different NVIDIA NIMs models (Llama 3.1 405B, Llama 3.2 3B, Llama 3.3 70B)
+- **Multi-Model Support**: Choose from different NVIDIA NIMs models (Llama 3.1 405B, Llama 3.1 70B, Llama 3.2 3B, DeepSeek V3.1, Qwen3 Next 80B)
 - **Web Search Integration**: Real-time web search capabilities using Tavily API
 - **Persistent Memory**: Conversation history maintained across sessions using LangGraph checkpointing
 - **Interactive Web Interface**: Modern web UI built with FastHTML and Pico CSS
@@ -30,7 +30,7 @@ Explorer AI is an interactive web-based platform that demonstrates advanced AI a
 
 - **Frontend**: FastHTML with Pico CSS for responsive design
 - **Backend**: Python with FastHTML and WebSocket support
-- **AI Models**: NVIDIA NIMs (Llama 3.1/3.2/3.3 variants)
+- **AI Models**: NVIDIA NIMs (Llama 3.1/3.2, DeepSeek V3.1, Qwen3 Next 80B)
 - **Agent Framework**: LangGraph with ReAct prebuilt agents
 - **Search**: Tavily API for real-time web information
 - **Storage**: SQLite for conversation persistence
@@ -94,8 +94,10 @@ LANGCHAIN_PROJECT=your_project_name_here       # Optional
 ### Available Models
 
 - **Llama 3.1 405B**: Most capable model for complex reasoning
-- **Llama 3.2 3B**: Lightweight model for faster responses  
-- **Llama 3.3 70B**: Balanced performance and capability
+- **Llama 3.1 70B**: Balanced performance and capability
+- **Llama 3.2 3B**: Lightweight model for faster responses
+- **DeepSeek V3.1**: Advanced reasoning capabilities
+- **Qwen3 Next 80B**: High-performance multilingual model
 
 ## 📚 Educational Playbook
 
