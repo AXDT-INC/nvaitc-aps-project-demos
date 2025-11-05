@@ -218,6 +218,7 @@ An NVAITC APS project (NVIDIA).
 
 ## Updates
 - 26/8/2025 by Jewel Aw: Updating README with pictures
+- 5/11/2025 by Jewel Aw: Debugged answer rendering problem, added features: support for markdown to render bold/heading, more models including Qwen, better error handling
 
 ## 📄 License
 
