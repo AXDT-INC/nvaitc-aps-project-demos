@@ -13,6 +13,9 @@ import textwrap
 import shortuuid
 import asyncio
 import sqlite3
+import json
+import markdown
+
 
 # Site Map
 # / entry page, redirects to /{uuid} with a fresh uuid
@@ -22,12 +25,14 @@ import sqlite3
 # (user) 1-n> (chats) 0-n> (cards / stored in LangGraph db)
 
 # model that will be used for generation of next answer
-selected_model = "nvdev/meta/llama-3.1-405b-instruct"
-# list of supported models the use can choose from
+selected_model = "meta/llama-3.1-405b-instruct"
+# list of supported models the user can choose from
 models = {
-    "nvdev/meta/llama-3.1-405b-instruct": "NVIDIA NIMs Llama 3.1 405B",
-    "nvdev/meta/llama-3.2-3b-instruct": "NVIDIA NIMs Llama 3.2 3B",
-    "nvdev/meta/llama-3.3-70b-instruct": "NVIDIA NIMs Llama 3.3 70B"
+    "meta/llama-3.1-405b-instruct": "NVIDIA NIMs Llama 3.1 405B",
+    "meta/llama-3.1-70b-instruct": "NVIDIA NIMs Llama 3.1 70B",
+    "meta/llama-3.2-3b-instruct": "NVIDIA NIMs Llama 3.2 3B",
+    "deepseek-ai/deepseek-v3.1": "DeepSeek V3.1",
+    "qwen/qwen3-next-80b-a3b-instruct": "Qwen3 Next 80B A3B Instruct",
 }
 
 # persistent storage of chat sessions
@@ -36,6 +41,7 @@ chats = db.t.chats
 if chats not in db.t:
     chats.create(id=str, title=str, updated=datetime, pk="id")
 ChatDTO = chats.dataclass()
+
 
 # Patch ChatDTO class with ft renderer and ID initialization
 @patch
@@ -49,14 +55,17 @@ def __ft__(self: ChatDTO):  # type: ignore
         dir="ltr",
     )
 
+
 # FIXME: this patch does not work, requires fixing
 @patch
 def __post_init__(self: ChatDTO):  # type: ignore
     self.id = shortuuid.uuid()
 
+
 # default chat for new chats
 new_chatDTO = ChatDTO()
 new_chatDTO.id = shortuuid.uuid()
+
 
 @dataclass
 class ChatCard:
@@ -72,15 +81,41 @@ class ChatCard:
         self.id = shortuuid.uuid()
 
     def __ft__(self):
+        html_content = markdown.markdown(self.content) if not self.busy else ""
+        content_div_id = f"content-{self.id}"
+        html_json = json.dumps(html_content) if html_content else '""'
+        content_elements = (
+            Progress()
+            if self.busy
+            else (
+                Div(
+                    id=content_div_id,
+                    cls="markdown-content",
+                    **{"data-html": html_json} if html_content else {}
+                ),
+                Script(f"""
+                    (function() {{
+                        function renderMarkdown() {{
+                            var div = document.getElementById('{content_div_id}');
+                            if (div && div.dataset.html) {{
+                                try {{
+                                    var html = JSON.parse(div.dataset.html);
+                                    div.innerHTML = html;
+                                }} catch(e) {{
+                                    console.error('Error rendering markdown:', e);
+                                }}
+                            }}
+                        }}
+                        // Try immediately
+                        renderMarkdown();
+                        // Also try after a short delay for dynamically inserted content
+                        setTimeout(renderMarkdown, 100);
+                    }})();
+                """)
+            )
+        )
         return Card(
-            (
-                Progress()
-                if self.busy
-                else Div(
-                    self.content,
-                    style="white-space: pre-wrap;",
-                )
-            ),
+            content_elements,
             (
                 Grid(*[A(Img(src=image), href=image) for image in self.images])
                 if self.images and len(self.images) > 0
@@ -102,10 +137,14 @@ class ChatCard:
             ),
         )
 
+
 # FastHTML includes the "HTMX" and "Surreal" libraries in headers, unless you pass `default_hdrs=False`.
 app, rt = fast_app(
     live=True,  # type: ignore
+    default_hdrs=False,  # Disable default headers to manually load HTMX
     hdrs=(
+        Script(src="https://unpkg.com/htmx.org@1.9.10/dist/htmx.min.js"),
+        Script(src="https://unpkg.com/htmx.org@1.9.10/dist/ext/ws.js"),
         picolink,
         Link(
             rel="stylesheet",
@@ -115,12 +154,12 @@ app, rt = fast_app(
         Meta(name="color-scheme", content="light dark"),
         MarkdownJS(),
     ),
-    ws_hdr=True,  # web socket headers
 )
+
 
 def navigation():
     navigation = Nav(
-        Ul(Li(Hgroup(H3("Explorer AI: Curiosity-Driven Agents"), P("Running on NVIDIA NIMs")))),
+        Ul(Li(Hgroup(H3("Explorer AI: Curiosity-Driven Agents"), P("Search powered by Tavily | Running on NVIDIA NIMs")))),
         Ul(
             Li(
                 Button(
@@ -204,6 +243,7 @@ def clear_chathistory():
                     onclick="window.location.href='/clear_chathistory';",
                 )
 
+
 def question_list():
     return Details(
         Summary("Your last 25 chats"),
@@ -212,6 +252,7 @@ def question_list():
         cls="dropdown",
         hx_swap_oob="true",
     )
+
 
 def answer_list(chat_id: str):
     # restore message histroy for current thread
@@ -270,6 +311,7 @@ def answer_list(chat_id: str):
         answer_list = Div(id="answer-list")
     return answer_list
 
+
 def model_selector():
     return Details(
         Summary("Model"),
@@ -298,6 +340,7 @@ def model_selector():
         cls="dropdown",
     )
 
+
 @rt("/model")
 async def get(model: str):
     global selected_model
@@ -305,9 +348,11 @@ async def get(model: str):
         selected_model = model
     return model_selector()
 
+
 @rt("/")
 async def get():
     return RedirectResponse(url=f"/chat/{new_chatDTO.id}")
+
 
 @rt("/chat/{id}")
 async def get(id: str):
@@ -340,15 +385,35 @@ async def get(id: str):
         min-height: 100vh; /* Minimum height of full viewport */
         box-sizing: border-box;
     }
+    .markdown-content {
+        line-height: 1.6;
+    }
+    .markdown-content h1, .markdown-content h2, .markdown-content h3 {
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+    }
+    .markdown-content ul, .markdown-content ol {
+        margin-left: 1.5em;
+        margin-bottom: 1em;
+    }
+    .markdown-content p {
+        margin-bottom: 1em;
+    }
+    .markdown-content strong {
+        font-weight: bold;
+    }
     """)
     return Title("Explore!"), css_style, body
+
 
 # WebSocket connection bookkeeping
 ws_connections = {}
 
+
 async def on_connect(send):
     ws_connections[send.args[0].client] = send
     print(f"WS    connect: {send.args[0].client}, total open: {len(ws_connections)}")
+
 
 async def on_disconnect(send):
     global ws_connections
@@ -359,9 +424,11 @@ async def on_disconnect(send):
     }
     print(f"WS disconnect: {send.args[0].client}, total open: {len(ws_connections)}")
 
+
 @app.ws("/ws_connect", conn=on_connect, disconn=on_disconnect)
 async def ws(msg: str, send):
     pass
+
 
 async def update_chat(model: str, card: Card, chat: Any, cleared_inpput, busy_button):
     inputs = {"messages": [("user", card.question)]}    # question is set as the inputs
@@ -369,6 +436,16 @@ async def update_chat(model: str, card: Card, chat: Any, cleared_inpput, busy_bu
     try:
         result = get_agent(model).invoke(inputs, config)
         print(f"{model} returned result.")
+        
+        # Print raw Tavily output for all ToolMessages
+        for msg in result["messages"]:
+            if isinstance(msg, ToolMessage) and "results" in msg.artifact:
+                print("\n" + "="*80)
+                print("TAVILY RAW OUTPUT:")
+                print("="*80)
+                print(json.dumps(msg.artifact, indent=2, ensure_ascii=False))
+                print("="*80 + "\n")
+        
         if (len(result["messages"]) >= 2) and (
             isinstance(result["messages"][-2], ToolMessage)
         ):
@@ -386,6 +463,12 @@ async def update_chat(model: str, card: Card, chat: Any, cleared_inpput, busy_bu
             f"Sorry, due to some technical issue no response could be generated: \n{e}"
         )
         success = False
+    except Exception as e:
+        print(f"Unhandled exception while calling LLM: {e}")
+        card.content = (
+            f"Sorry, an unexpected error occurred while contacting the model.\n{e}"
+        )
+        success = False
 
     card.model_id = model
     card.busy = False
@@ -398,23 +481,50 @@ async def update_chat(model: str, card: Card, chat: Any, cleared_inpput, busy_bu
             await send(busy_button)
             if success:
                 await send(question_list())
-        except:
-            pass
+        except Exception as e:
+            print(f"Error sending WebSocket update: {e}")
+            import traceback
+            traceback.print_exc()
     return success
 
 chat_success = False
 
 @threaded
 def generate_chat(model: str, card: Card, chat: Any, cleared_inpput, busy_button):
-    chat.title = card.question if chat.title == None else chat.title
-    chat.updated = datetime.now()
-    success = asyncio.run(update_chat(model, card, chat, cleared_inpput, busy_button))
-    if success:
-        chat_success = True
-        global new_chatDTO
-        if chat is new_chatDTO:
-            new_chatDTO = ChatDTO()
-            new_chatDTO.id = shortuuid.uuid()
+    try:
+        chat.title = card.question if chat.title == None else chat.title
+        chat.updated = datetime.now()
+        success = asyncio.run(update_chat(model, card, chat, cleared_inpput, busy_button))
+        if success:
+            chat_success = True
+            global new_chatDTO
+            if chat is new_chatDTO:
+                new_chatDTO = ChatDTO()
+                new_chatDTO.id = shortuuid.uuid()
+    except Exception as e:
+        print(f"Error in generate_chat thread: {e}")
+        import traceback
+        traceback.print_exc()
+        # Update card with error message
+        card.busy = False
+        card.content = f"Unexpected error occurred: {str(e)}"
+        card.model_id = model
+        cleared_inpput.disabled = False
+        busy_button.disabled = False
+        # Try to send error via WebSocket using asyncio.run
+        async def send_error_updates():
+            try:
+                for send in ws_connections.values():
+                    await send(card)
+                    await send(cleared_inpput)
+                    await send(busy_button)
+            except Exception as ws_error:
+                print(f"Error sending error message via WebSocket: {ws_error}")
+        try:
+            asyncio.run(send_error_updates())
+        except Exception as run_error:
+            print(f"Error running async error update: {run_error}")
+
 
 @rt("/chat/{id}")
 async def post(question: str, id: str):
@@ -445,14 +555,46 @@ async def post(question: str, id: str):
         hx_swap_oob="true",
     )
 
+    # Validate model and API key before starting thread
+    try:
+        # This will raise RuntimeError if NVIDIA_API_KEY is not set
+        get_agent(selected_model)
+    except RuntimeError as e:
+        # API key missing or other configuration error
+        card.busy = False
+        card.content = f"Configuration Error: {str(e)}\n\nPlease ensure you have a .env file with NVIDIA_API_KEY set."
+        cleared_inpput.disabled = False
+        busy_button.disabled = False
+        return card, cleared_inpput, busy_button
+    except Exception as e:
+        # Other error during agent initialization
+        card.busy = False
+        card.content = f"Error initializing agent: {str(e)}"
+        cleared_inpput.disabled = False
+        busy_button.disabled = False
+        return card, cleared_inpput, busy_button
+
     # call response generation in seperate Thread
-    generate_chat(selected_model, card, chat, cleared_inpput, busy_button)
+    try:
+        generate_chat(selected_model, card, chat, cleared_inpput, busy_button)
+    except Exception as e:
+        # Error starting the thread
+        print(f"Error starting chat generation thread: {e}")
+        import traceback
+        traceback.print_exc()
+        card.busy = False
+        card.content = f"Error starting chat generation: {str(e)}"
+        cleared_inpput.disabled = False
+        busy_button.disabled = False
+        return card, cleared_inpput, busy_button
 
     return card, cleared_inpput, busy_button
+
 
 def main():
     print("preparing html server")
     serve()
+
 
 if __name__ == "__main__":
     main()
