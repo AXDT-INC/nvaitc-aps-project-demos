@@ -24,12 +24,11 @@ nvaitc-aps-project-demos/
 - **IntelliExo AI Advisor Panel**: AI-powered conversational platform featuring historical figures and thought leaders as personal advisors using LLMs running on NIMs and RAG technologies
 - **ProGo Protein Evaluation (TM-PLDDT)**: Comprehensive protein structure prediction and evaluation pipeline using ESMFold (NIM) integration and advanced structural similarity analysis
 - **Explorer AI**: Curiosity-driven agent platform demonstrating ReAct architecture with web search integration and persistent memory using NIMs
-- **Resume Evaluator AI**: Full-stack application for intelligent resume screening and candidate evaluation, leveraging Llama 3.1 405B model running on NIMs for HR automation
+- **Resume Evaluator AI**: Intelligent resume screening and candidate evaluation, leveraging LLMs running on NIMs for HR automation
 
 ## Workshops
 
 - **NIM-build-tune-deploy**: Comprehensive workshop covering NVIDIA NIM (NVIDIA Inference Microservices) deployment, including (1) NIM API tutorials, (2) Local NIM deployment, (3) LoRA training with NeMo, (4) Deploying LoRA models with NIM
-  - Workshop setup and environment configuration
 
 ## Support
 
