@@ -39,8 +39,8 @@ The setup notebook (00_Workshop_Setup.ipynb) will guide you through obtaining an
 
 1. Clone this repository:
 ```bash
-git clone <this repository>
-cd workshops/NIM-build-tune-deploy
+git clone https://github.com/snaic-org/NIM-build-tune-deploy-participant.git
+cd NIM-build-tune-deploy-participant
 ```
 
 2. Run the setup notebook:
@@ -91,16 +91,6 @@ If you encounter issues:
 3. Check that your GPU has sufficient memory (16GB+ recommended)
 4. Confirm you have enough disk space for model caching
 
-## Important: API Keys and External Services
-
-This workshop requires users to provide their own API keys:
-- **NVIDIA API Key**: Access to cloud-hosted NIMs (get from build.nvidia.com)
-- **NGC API Key**: Download models and containers (get from ngc.nvidia.com)
-
-All models are accessed via API or downloaded by the user. No models are redistributed with this workshop. The workshop demonstrates how to use NVIDIA's inference services - users must comply with the respective model licenses when using these services.
-
 ## 📄 License
 
-This project is licensed under the Apache License 2.0 - see the repository's [LICENSE](../../LICENSE) file for details.
-
-Note: Model usage is subject to respective model licenses. This workshop material is provided for educational purposes. 
+This workshop material is provided for educational purposes. Model usage is subject to respective model licenses. 
