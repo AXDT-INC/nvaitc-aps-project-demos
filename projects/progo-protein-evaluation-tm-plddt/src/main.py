@@ -13,7 +13,9 @@ import re
 import shutil
 import datetime
 
+# LOCAL AXONOS MODIFICATION - No API Key
 from src.pipeline.esmfold_predictor import ESMfoldPredictor
+from src.pipeline.local_predictor import CUDA_AVAILABLE
 from src.pipeline.tm_score_calculator import TMScoreCalculator
 from src.pipeline.plddt_extractor import PLDDTExtractor
 from src.analysis.results_analyzer import ResultsAnalyzer
@@ -240,6 +242,13 @@ def main():
             json.dump(run_metadata, f, indent=2)
         logger.info(f"Saved run metadata to: {metadata_file}")
         
+        # LOCAL AXONOS MODIFICATION - No API Key
+        logger.info("Using local structure prediction (no NVIDIA API key required)")
+        if CUDA_AVAILABLE:
+            logger.info("CUDA detected for local prediction")
+        else:
+            logger.info("CUDA not detected; continuing with CPU local prediction")
+
         # Initialize components
         predictor = ESMfoldPredictor(ground_truth_set=args.ground_truth_set)
         calculator = TMScoreCalculator()

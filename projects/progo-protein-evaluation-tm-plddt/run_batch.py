@@ -25,7 +25,8 @@ def get_available_files():
 
 def run_pipeline(fasta_file, ground_truth_set):
     """Run the pipeline with given parameters."""
-    print(f"\nRunning: {fasta_file} → {ground_truth_set}")
+    # LOCAL AXONOS MODIFICATION - No API Key
+    print(f"\nRunning (local AxonOS mode): {fasta_file} → {ground_truth_set}")
     print("-" * 50)
     
     cmd = [

@@ -30,8 +30,9 @@ SPECIFIC_RUNS = [
 
 def run_pipeline(fasta_file, ground_truth_set):
     """Run the pipeline with given parameters."""
+    # LOCAL AXONOS MODIFICATION - No API Key
     print(f"\n{'='*60}")
-    print(f"Running: {fasta_file} against {ground_truth_set}")
+    print(f"Running (local AxonOS mode): {fasta_file} against {ground_truth_set}")
     print(f"Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"{'='*60}\n")
     
